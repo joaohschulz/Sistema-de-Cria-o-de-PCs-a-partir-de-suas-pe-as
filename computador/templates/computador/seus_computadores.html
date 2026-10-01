@@ -1,0 +1,22 @@
+{% extends 'computador/dashboard.html' %}
+
+{% block titulo %}Criar computador{% endblock %}
+
+{% block conteudo %}
+
+
+<section class="painel">
+    <h1>Ver meus computadores</h1>
+
+    <p>Abaixo você conseguirá ver seus computadores criados</p>
+
+    {% for c in pc %}
+    <div>
+        {{ c.nome }}
+    </div>
+
+    {% endfor %}
+
+</section>
+<a class="voltar" href="{% url 'dashboard' %}">Voltar</a>
+{% endblock %}

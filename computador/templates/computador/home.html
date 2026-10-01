@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonteSeuPC</title>
+    <link rel="stylesheet" href="{% static 'computador/css/home.css' %}">
+</head>
+
+<body>
+    <header>
+        <p class="logo">MonteSeuPC</p>
+
+        <nav>
+            <a href="#como-funciona">Como funciona</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+    </header>
+
+    <main class="principal">
+        <section class="conteudo-principal">
+            <h1>Monte o computador ideal para você</h1>
+
+            <p class="descricao">
+                Escolha as peças do seu computador de forma simples e monte uma configuração que combina com o seu objetivo.
+            </p>
+
+            <a class="botao" href="{% url 'login' %}">Começar a montar</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 MonteSeuPC</p>
+    </footer>
+</body>
+</html>

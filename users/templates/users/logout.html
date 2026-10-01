@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Até logo | MonteSeuPC</title>
+
+    <link rel="stylesheet" href="{% static 'users/css/autenticacao.css' %}">
+</head>
+
+<body>
+    <main class="cartao-login">
+        <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+
+        <h1>Até logo!</h1>
+        <p class="desc">Você saiu da sua conta com sucesso. Esperamos te ver novamente em breve.</p>
+
+        <a class="botao-entrar" href="{% url 'login' %}" style="display: block; text-align: center; text-decoration: none;">Entrar novamente</a>
+
+        <div class="registrar">
+            <a href="{% url 'home' %}">Voltar para a página inicial</a>
+        </div>
+    </main>
+</body>
+</html>

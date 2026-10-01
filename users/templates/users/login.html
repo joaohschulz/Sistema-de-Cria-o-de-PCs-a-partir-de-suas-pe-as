@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | MonteSeuPC</title>
+
+    <link rel="stylesheet" href="{% static 'users/css/autenticacao.css' %}">
+</head>
+
+<body>
+    <main class="cartao-login">
+        <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+
+        <h1>Entrar</h1>
+        <p class="desc">Insira suas credenciais abaixo: </p>
+
+        {% if form.errors %}
+            <p class="erro">
+                Usuário ou senha incorretos. Tente novamente.
+            </p>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+
+            <div class="campo">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            
+            <div class="campo">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+
+            <input type="hidden" name="next" value="{{ next }}">
+
+            <button class="botao-entrar" type="submit">Entrar</button>
+
+            <div class="registrar">
+                <a href="{% url 'registrar' %}">Registrar-se</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

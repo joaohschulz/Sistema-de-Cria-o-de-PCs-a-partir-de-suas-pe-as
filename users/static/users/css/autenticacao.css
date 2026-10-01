@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2937;
+}
+
+.cartao-login {
+    width: 100%;
+    max-width: 420px;
+    padding: 60px;
+    border-radius: 60px;
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: inline-block;
+    margin-bottom: 32px;
+    color: #111827;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.desc {
+    font-size: 15px;
+    color: rgb(14, 28, 40);
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font: inherit;
+}
+
+input:focus {
+    outline: 2px solid #2563eb;
+    border-color: #2563eb;
+}
+
+.botao-entrar {
+    width: 100%;
+    padding: 13px;
+    border: 0;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.botao-entrar:hover {
+    background-color: #1d4ed8;
+}
+
+.erro {
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.registrar a {
+    text-decoration: none;
+    color: rgb(13, 4, 252);
+}
+
+.registrar a:hover {
+    color: #1d4ed8;
+}
+
+.erro-campo {
+    margin-top: 8px;
+    color: #b91c1c;
+    font-size: 14px;
+}
+
+.erro-campo ul {
+    list-style: none;
+}
+
+.ajuda {
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.ajuda ul {
+    margin-top: 6px;
+    padding-left: 18px;
+}
+
+.link-alternativo {
+    margin-top: 24px;
+    text-align: center;
+    color: #6b7280;
+}
+
+.link-alternativo a {
+    color: #2563eb;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+/*
+
+LOGOUT
+
+*/ 
+
+
+

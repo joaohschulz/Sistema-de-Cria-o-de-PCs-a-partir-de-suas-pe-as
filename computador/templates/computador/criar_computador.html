@@ -1,0 +1,34 @@
+{% extends 'computador/dashboard.html' %}
+
+{% block titulo %}Criar computador{% endblock %}
+
+{% block conteudo %}
+
+
+    <section class="painel">
+        <h1>Cadastrar computador</h1>
+
+        <p>Escolha um nome para identificar sua configuração.</p>
+
+        <form class="formulario-computador" action="{% url 'criar_computador' %}" method="post">
+            {% csrf_token %}
+
+            <div class="campo">
+                {{ form.nome.label_tag }}
+                {{ form.nome }}
+
+                {% if form.nome.errors %}
+                    <div class="erro-campo">
+                        {{ form.nome.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button class="botao-principal" type="submit">
+                Salvar computador
+            </button>
+
+        </form>
+    </section>
+    <a class="voltar" href="{% url 'dashboard' %}">Voltar</a>
+{% endblock %}
