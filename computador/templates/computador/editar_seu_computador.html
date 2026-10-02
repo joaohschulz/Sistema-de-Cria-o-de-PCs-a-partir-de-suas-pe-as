@@ -1,0 +1,141 @@
+{% extends 'computador/dashboard.html' %}
+{% load static %}
+
+{% block titulo %}Cadastrar peças{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<section class="cadastro-pecas" aria-labelledby="titulo-cadastro">
+    <header class="cadastro-cabecalho">
+        <span class="cadastro-etiqueta">Meu computador</span>
+        <h1 id="titulo-cadastro">Cadastre as peças do seu computador</h1>
+        <p>Selecione o computador e escolha os componentes abaixo.</p>
+    </header>
+
+    <form class="formulario-pecas" action="{% url 'editar_seu_computador' %}" method="post">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="alerta-erros" role="alert">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <div class="grade-campos">
+            <div class="campo campo-completo{% if form.computador.errors %} campo-invalido{% endif %}">
+                {{ form.computador.label_tag }}
+                {{ form.computador }}
+
+                {% if form.computador.help_text %}
+                    <div class="ajuda-campo">{{ form.computador.help_text }}</div>
+                {% endif %}
+
+                {% if form.computador.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.computador.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="campo{% if form.processador.errors %} campo-invalido{% endif %}">
+                {{ form.processador.label_tag }}
+                {{ form.processador }}
+
+                {% if form.processador.help_text %}
+                    <div class="ajuda-campo">{{ form.processador.help_text }}</div>
+                {% endif %}
+
+                {% if form.processador.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.processador.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="campo{% if form.placaMae.errors %} campo-invalido{% endif %}">
+                {{ form.placaMae.label_tag }}
+                {{ form.placaMae }}
+
+                {% if form.placaMae.help_text %}
+                    <div class="ajuda-campo">{{ form.placaMae.help_text }}</div>
+                {% endif %}
+
+                {% if form.placaMae.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.placaMae.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="campo{% if form.memoriaRam.errors %} campo-invalido{% endif %}">
+                {{ form.memoriaRam.label_tag }}
+                {{ form.memoriaRam }}
+
+                {% if form.memoriaRam.help_text %}
+                    <div class="ajuda-campo">{{ form.memoriaRam.help_text }}</div>
+                {% endif %}
+
+                {% if form.memoriaRam.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.memoriaRam.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="campo{% if form.armazenamento.errors %} campo-invalido{% endif %}">
+                {{ form.armazenamento.label_tag }}
+                {{ form.armazenamento }}
+
+                {% if form.armazenamento.help_text %}
+                    <div class="ajuda-campo">{{ form.armazenamento.help_text }}</div>
+                {% endif %}
+
+                {% if form.armazenamento.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.armazenamento.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="campo{% if form.placaDeVideo.errors %} campo-invalido{% endif %}">
+                {{ form.placaDeVideo.label_tag }}
+                {{ form.placaDeVideo }}
+
+                {% if form.placaDeVideo.help_text %}
+                    <div class="ajuda-campo">{{ form.placaDeVideo.help_text }}</div>
+                {% endif %}
+
+                {% if form.placaDeVideo.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.placaDeVideo.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="campo{% if form.fonte.errors %} campo-invalido{% endif %}">
+                {{ form.fonte.label_tag }}
+                {{ form.fonte }}
+
+                {% if form.fonte.help_text %}
+                    <div class="ajuda-campo">{{ form.fonte.help_text }}</div>
+                {% endif %}
+
+                {% if form.fonte.errors %}
+                    <div class="erros-campo" role="alert">
+                        {{ form.fonte.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <footer class="acoes-formulario">
+            <a class="botao-voltar" href="{% url 'dashboard' %}">Voltar</a>
+            <button class="botao-salvar" type="submit">Salvar computador</button>
+        </footer>
+    </form>
+</section>
+{% endblock %}

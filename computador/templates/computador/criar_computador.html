@@ -1,34 +1,45 @@
 {% extends 'computador/dashboard.html' %}
+{% load static %}
 
 {% block titulo %}Criar computador{% endblock %}
 
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
+{% endblock %}
+
 {% block conteudo %}
-
-
-    <section class="painel">
-        <h1>Cadastrar computador</h1>
-
+<section class="cadastro-pecas" aria-labelledby="titulo-cadastro">
+    <header class="cadastro-cabecalho">
+        <span class="cadastro-etiqueta">Novo computador</span>
+        <h1 id="titulo-cadastro">Cadastrar computador</h1>
         <p>Escolha um nome para identificar sua configuração.</p>
+    </header>
 
-        <form class="formulario-computador" action="{% url 'criar_computador' %}" method="post">
-            {% csrf_token %}
+    <form class="formulario-pecas" action="{% url 'criar_computador' %}" method="post">
+        {% csrf_token %}
 
-            <div class="campo">
+        <div class="grade-campos">
+            <div class="campo campo-completo{% if form.nome.errors %} campo-invalido{% endif %}">
                 {{ form.nome.label_tag }}
                 {{ form.nome }}
 
+                {% if form.nome.help_text %}
+                    <div class="ajuda-campo">{{ form.nome.help_text }}</div>
+                {% endif %}
+
                 {% if form.nome.errors %}
-                    <div class="erro-campo">
+                    <div class="erros-campo" role="alert">
                         {{ form.nome.errors }}
                     </div>
                 {% endif %}
             </div>
+        </div>
 
-            <button class="botao-principal" type="submit">
-                Salvar computador
-            </button>
-
-        </form>
-    </section>
-    <a class="voltar" href="{% url 'dashboard' %}">Voltar</a>
+        <footer class="acoes-formulario">
+            <a class="botao-voltar" href="{% url 'dashboard' %}">Voltar</a>
+            <button class="botao-salvar" type="submit">Salvar computador</button>
+        </footer>
+    </form>
+</section>
 {% endblock %}

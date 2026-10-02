@@ -9,6 +9,7 @@
     <title>{% block titulo %}Dashboard{% endblock %} | MonteSeuPC</title>
 
     <link rel="stylesheet" href="{% static 'computador/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,10 +18,12 @@
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet"
     >
+    {% block extra_css %}{% endblock %}
 </head>
 
+
 <body>
-    <header>
+    <header class="barra-lateral">
         <div class="logado">
             <img
                 src="{% static 'computador/img/usuario.jpg' %}"
@@ -30,40 +33,38 @@
             <span class="nome">{{ user.username }}</span>
         </div>
 
-        <nav class="menu-principal">
-            <a href="{% url 'criar_computador' %}">
-                Criar novo computador
-            </a>
-
-            <a href="{% url 'seus_computadores' %}">
-                Seus computadores</a>
-            <a href="#seupc">-</a>
+        <nav class="menu-principal" aria-label="Menu principal">
+            <a href="{% url 'criar_computador' %}">Criar novo computador</a>
+            <a href="{% url 'seus_computadores' %}">Seus computadores</a>
+            <a href="{% url 'editar_seu_computador' %}">Editar seu computador</a>
         </nav>
 
-        <nav class="sair">
+        <nav class="sair" aria-label="Sessão">
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
 
-                <button class="botaosair" type="submit">
-                    Sair
-                </button>
+                <button class="botaosair" type="submit">Sair</button>
             </form>
         </nav>
     </header>
 
     <main class="conteudo-principal">
         {% block conteudo %}
-            <section class="painel">
-                <h1>Olá, {{ user.username }}!</h1>
+            <section class="cadastro-pecas" aria-labelledby="titulo-inicio">
+                <header class="cadastro-cabecalho">
+                    <span class="cadastro-etiqueta">Início</span>
+                    <h1 id="titulo-inicio">Olá, {{ user.username }}!</h1>
+                    <p>
+                        Use o menu ao lado para criar um computador ou visualizar
+                        suas configurações.
+                    </p>
+                </header>
 
-                <p>
-                    Use o menu ao lado para criar um computador ou visualizar
-                    suas configurações.
-                </p>
-
-                <a class="botao-principal" href="{% url 'criar_computador' %}">
-                    Criar novo computador
-                </a>
+                <footer class="acoes-formulario">
+                    <a class="botao-salvar" href="{% url 'criar_computador' %}">
+                        Criar novo computador
+                    </a>
+                </footer>
             </section>
         {% endblock %}
     </main>

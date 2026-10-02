@@ -1,11 +1,12 @@
 from django.urls import path
-from . import views
+from .views import HomeView, DashboardView, CriarComputadorView, SeusComputadoresView, EditarSeuComputadorView
+
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('dashboard/criar-computador/',views.criar_computador, name='criar_computador' ),
-    path('dashboard/seus-computadores', views.seucomputador, name='seus_computadores')
-    
+    path('', HomeView.as_view(), name='home'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('dashboard/criar-computador/',CriarComputadorView.as_view(), name='criar_computador' ),
+    path('dashboard/seus-computadores', SeusComputadoresView.as_view(), name='seus_computadores'),
+    path('dashboard/editar-computador', EditarSeuComputadorView.as_view(), name='editar_seu_computador')   
 ]

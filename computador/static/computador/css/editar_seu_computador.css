@@ -1,0 +1,453 @@
+
+.cadastro-pecas {
+    --cor-texto: #172033;
+    --cor-secundaria: #526079;
+    --cor-borda: #d5dce6;
+    --cor-principal: #1d4ed8;
+
+    width: calc(100% - 24px);
+    max-width: 700px;
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    flex: 0 1 auto;
+    align-self: flex-start;
+
+    margin: 20px auto;
+    padding: 24px;
+
+    color: var(--cor-texto);
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgb(15 23 42 / 6%);
+
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.cadastro-pecas,
+.cadastro-pecas *,
+.cadastro-pecas *::before,
+.cadastro-pecas *::after {
+    box-sizing: border-box;
+}
+
+/* Neutraliza estilos globais de tags (header, footer, article, dl...)
+   que o dashboard possa ter definido, ex.: footer fixo ou header com altura. */
+.cadastro-pecas :is(header, footer, article, dl, dt, dd) {
+    position: static;
+    inset: auto;
+    float: none;
+    z-index: auto;
+    height: auto;
+    min-height: 0;
+    transform: none;
+    box-shadow: none;
+    text-align: left;
+}
+
+/* =========================================================
+   Cabeçalho
+   ========================================================= */
+.cadastro-pecas .cadastro-cabecalho {
+    margin: 0 0 20px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+
+.cadastro-pecas .cadastro-etiqueta {
+    display: inline-block;
+    padding: 4px 9px;
+
+    color: #1e40af;
+    background: #eff6ff;
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.cadastro-pecas .cadastro-cabecalho h1 {
+    margin: 10px 0 6px;
+    padding: 0;
+
+    color: var(--cor-texto);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+}
+
+.cadastro-pecas .cadastro-cabecalho p {
+    margin: 0;
+    color: var(--cor-secundaria);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   Formulário
+   ========================================================= */
+.cadastro-pecas .formulario-pecas {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.cadastro-pecas .grade-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+}
+
+.cadastro-pecas .campo {
+    display: block;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.cadastro-pecas .campo-completo {
+    grid-column: 1 / -1;
+}
+
+.cadastro-pecas .campo label {
+    display: block;
+    margin: 0 0 5px;
+    padding: 0;
+
+    color: var(--cor-texto);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Inputs, selects e textareas (especificidade 0,2,0) */
+.cadastro-pecas .campo :where(
+    select,
+    textarea,
+    input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"])
+) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 10px;
+
+    color: var(--cor-texto);
+    background-color: #f8fafc;
+    border: 1px solid var(--cor-borda);
+    border-radius: 7px;
+    box-shadow: none;
+
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.cadastro-pecas .campo :where(
+    select:not([multiple]):not([size]),
+    input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"])
+) {
+    height: 40px;
+}
+
+.cadastro-pecas .campo :where(textarea) {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.cadastro-pecas .campo :where(input, select, textarea):focus-visible {
+    outline: 2px solid var(--cor-principal);
+    outline-offset: 2px;
+    border-color: var(--cor-principal);
+}
+
+.cadastro-pecas .ajuda-campo {
+    margin-top: 5px;
+    color: var(--cor-secundaria);
+    font-size: 12px;
+}
+
+/* =========================================================
+   Validação
+   (vem depois da regra base para vencer em caso de empate)
+   ========================================================= */
+.cadastro-pecas .campo-invalido :where(input, select, textarea) {
+    border-color: #b91c1c;
+}
+
+.cadastro-pecas .campo-invalido :where(input, select, textarea):focus-visible {
+    outline-color: #b91c1c;
+    border-color: #b91c1c;
+}
+
+.cadastro-pecas .erros-campo {
+    margin-top: 5px;
+    color: #b91c1c;
+    font-size: 12px;
+}
+
+.cadastro-pecas .errorlist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cadastro-pecas .errorlist li + li {
+    margin-top: 3px;
+}
+
+.cadastro-pecas .alerta-erros {
+    margin: 0 0 16px;
+    padding: 10px 12px;
+
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   Ações
+   ========================================================= */
+.cadastro-pecas .acoes-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    width: auto;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+
+    background: transparent;
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+.cadastro-pecas :is(a.botao-voltar, a.botao-salvar, button.botao-salvar) {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+
+    width: auto;
+    max-width: 100%;
+    min-height: 40px;
+    margin: 0;
+    padding: 8px 16px;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+    box-shadow: none;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: background-color 0.15s;
+}
+
+.cadastro-pecas a.botao-voltar,
+.cadastro-pecas a.botao-voltar:visited {
+    color: #334155;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+.cadastro-pecas a.botao-voltar:hover {
+    color: #334155;
+    background: #e2e8f0;
+}
+
+.cadastro-pecas a.botao-salvar,
+.cadastro-pecas a.botao-salvar:visited,
+.cadastro-pecas button.botao-salvar {
+    color: #fff;
+    background: var(--cor-principal);
+}
+
+.cadastro-pecas a.botao-salvar:hover,
+.cadastro-pecas button.botao-salvar:hover {
+    background: #1e40af;
+}
+
+.cadastro-pecas :is(a.botao-voltar, a.botao-salvar, button.botao-salvar):focus-visible {
+    outline: 2px solid var(--cor-principal);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   Listagem de computadores
+   ========================================================= */
+.cadastro-pecas.lista-computadores {
+    max-width: 860px;
+}
+
+.cadastro-pecas.lista-computadores .grade-computadores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+}
+
+.cadastro-pecas.lista-computadores .cartao-computador {
+    display: block;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    background: #fff;
+    border: 1px solid #dbe3ee;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgb(15 23 42 / 4%);
+}
+
+.cadastro-pecas.lista-computadores .cartao-cabecalho {
+    margin: 0;
+    padding: 14px 16px;
+    background: #eff6ff;
+    border: 0;
+    border-bottom: 1px solid #dbeafe;
+}
+
+.cadastro-pecas.lista-computadores .computador-etiqueta {
+    display: block;
+    margin: 0 0 4px;
+
+    color: #1d4ed8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.cadastro-pecas.lista-computadores .cartao-cabecalho h2 {
+    margin: 0;
+    padding: 0;
+
+    color: var(--cor-texto);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.cadastro-pecas.lista-computadores .lista-componentes {
+    display: block;
+    margin: 0;
+    padding: 4px 16px;
+}
+
+.cadastro-pecas.lista-computadores .componente {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+
+    margin: 0;
+    padding: 10px 0;
+}
+
+.cadastro-pecas.lista-computadores .componente + .componente {
+    border-top: 1px solid #edf0f5;
+}
+
+.cadastro-pecas.lista-computadores .componente dt {
+    margin: 0;
+    padding: 0;
+    color: var(--cor-secundaria);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cadastro-pecas.lista-computadores .componente dd {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--cor-texto);
+    font-size: 13px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.cadastro-pecas.lista-computadores .estado-vazio {
+    grid-column: 1 / -1;
+    padding: 28px 16px;
+
+    text-align: center;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+}
+
+.cadastro-pecas.lista-computadores .estado-vazio p {
+    margin: 0;
+    color: var(--cor-secundaria);
+    font-size: 13px;
+}
+
+/* =========================================================
+   Telas menores
+   ========================================================= */
+@media (max-width: 720px) {
+    .cadastro-pecas.lista-computadores {
+        max-width: 520px;
+    }
+
+    .cadastro-pecas.lista-computadores .grade-computadores {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 540px) {
+    .cadastro-pecas {
+        margin: 12px auto;
+        padding: 18px;
+    }
+
+    .cadastro-pecas .cadastro-cabecalho h1 {
+        font-size: 20px;
+    }
+
+    .cadastro-pecas .grade-campos {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .cadastro-pecas.lista-computadores .componente {
+        grid-template-columns: 1fr;
+        gap: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cadastro-pecas * {
+        transition: none;
+    }
+}

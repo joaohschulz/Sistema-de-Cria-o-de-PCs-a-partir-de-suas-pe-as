@@ -1,22 +1,70 @@
 {% extends 'computador/dashboard.html' %}
+{% load static %}
 
 {% block titulo %}Criar computador{% endblock %}
 
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
+{% endblock %}
+
 {% block conteudo %}
+<section class="cadastro-pecas lista-computadores" aria-labelledby="titulo-computadores">
+    <header class="cadastro-cabecalho">
+        <span class="cadastro-etiqueta">Meus computadores</span>
+        <h1 id="titulo-computadores">Ver meus computadores</h1>
+        <p>Confira seus computadores e os componentes cadastrados.</p>
+    </header>
 
+    <div class="grade-computadores">
+        {% for c in pc %}
+            <article class="cartao-computador">
+                <header class="cartao-cabecalho">
+                    <span class="computador-etiqueta">Computador</span>
+                    <h2>{{ c.nome }}</h2>
+                </header>
 
-<section class="painel">
-    <h1>Ver meus computadores</h1>
+                <dl class="lista-componentes">
+                    <div class="componente">
+                        <dt>Processador</dt>
+                        <dd>{{ c.pecas.processador }}</dd>
+                    </div>
 
-    <p>Abaixo você conseguirá ver seus computadores criados</p>
+                    <div class="componente">
+                        <dt>Placa-mãe</dt>
+                        <dd>{{ c.pecas.placaMae }}</dd>
+                    </div>
 
-    {% for c in pc %}
-    <div>
-        {{ c.nome }}
+                    <div class="componente">
+                        <dt>Memória RAM</dt>
+                        <dd>{{ c.pecas.memoriaRam }}</dd>
+                    </div>
+
+                    <div class="componente">
+                        <dt>Armazenamento</dt>
+                        <dd>{{ c.pecas.armazenamento }}</dd>
+                    </div>
+
+                    <div class="componente">
+                        <dt>Placa de vídeo</dt>
+                        <dd>{{ c.pecas.placaDeVideo }}</dd>
+                    </div>
+
+                    <div class="componente">
+                        <dt>Fonte</dt>
+                        <dd>{{ c.pecas.fonte }}</dd>
+                    </div>
+                </dl>
+            </article>
+        {% empty %}
+            <div class="estado-vazio">
+                <p>Você ainda não criou nenhum computador</p>
+            </div>
+        {% endfor %}
     </div>
 
-    {% endfor %}
-
+    <footer class="acoes-formulario">
+        <a class="botao-voltar" href="{% url 'dashboard' %}">Voltar</a>
+    </footer>
 </section>
-<a class="voltar" href="{% url 'dashboard' %}">Voltar</a>
 {% endblock %}
