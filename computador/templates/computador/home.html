@@ -6,16 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MonteSeuPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'computador/css/home.css' %}">
 </head>
 
 <body>
     <header>
-        <p class="logo">MonteSeuPC</p>
+        <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
 
         <nav>
             <a href="#como-funciona">Como funciona</a>
             <a href="#sobre">Sobre</a>
+            <a class="nav-entrar" href="{% url 'login' %}">Entrar</a>
         </nav>
     </header>
 
@@ -30,6 +34,16 @@
             <a class="botao" href="{% url 'login' %}">Começar a montar</a>
         </section>
     </main>
+
+    <section id="como-funciona" class="secao">
+        <h2>Como funciona</h2>
+        <p>Escolha as peças, veja a compatibilidade e salve sua configuração.</p>
+    </section>
+
+    <section id="sobre" class="secao">
+        <h2>Sobre</h2>
+        <p>O MonteSeuPC ajuda você a montar um computador sem complicação.</p>
+    </section>
 
     <footer>
         <p>© 2026 MonteSeuPC</p>

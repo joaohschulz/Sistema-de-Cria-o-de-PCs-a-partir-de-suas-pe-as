@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+
+
+:root {
+    --fundo: #0d1520;
+    --fundo-malha: rgba(120, 160, 220, 0.06);
+    --painel: #152133;
+    --painel-campo: #0f1927;
+    --borda: #263550;
+    --borda-forte: #3a4d70;
+    --texto: #e8edf5;
+    --texto-suave: #9aa9c0;
+    --destaque: #4f8cff;
+    --destaque-hover: #6ba0ff;
+    --erro-fundo: rgba(239, 68, 68, 0.12);
+    --erro-borda: rgba(239, 68, 68, 0.45);
+    --erro-texto: #fca5a5;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,112 +30,192 @@ body {
     align-items: center;
     justify-content: center;
     padding: 24px;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    color: #1f2937;
+    font-family: 'Open Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--texto);
+    background-color: var(--fundo);
+    background-image:
+        linear-gradient(var(--fundo-malha) 1px, transparent 1px),
+        linear-gradient(90deg, var(--fundo-malha) 1px, transparent 1px);
+    background-size: 36px 36px;
+    -webkit-font-smoothing: antialiased;
 }
+
+/* ---------- Cartão ---------- */
 
 .cartao-login {
     width: 100%;
-    max-width: 420px;
-    padding: 60px;
-    border-radius: 60px;
-    background-color: white;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 440px;
+    padding: 44px 40px 40px;
+    border-radius: 16px;
+    background-color: var(--painel);
+    border: 1px solid var(--borda);
+    border-top: 3px solid var(--destaque);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 
+/* ---------- Logo ---------- */
+
 .logo {
-    display: inline-block;
-    margin-bottom: 32px;
-    color: #111827;
-    font-size: 24px;
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    color: var(--texto);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     text-decoration: none;
 }
+
+/* "chip" desenhado só com CSS */
+.logo::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 2px solid var(--destaque);
+    background:
+        radial-gradient(circle, var(--destaque) 0 3px, transparent 3.5px);
+    box-shadow:
+        -5px 0 0 -3px var(--destaque),
+        5px 0 0 -3px var(--destaque);
+}
+
+.logo:hover {
+    color: var(--destaque-hover);
+}
+
+/* ---------- Títulos e textos ---------- */
 
 h1 {
     margin-bottom: 8px;
     font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
+
+.desc,
+.descricao {
+    margin-bottom: 26px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--texto-suave);
+}
+
+/* ---------- Campos ---------- */
 
 .campo {
     margin-bottom: 18px;
 }
 
-.desc {
-    font-size: 15px;
-    color: rgb(14, 28, 40);
-    margin-bottom: 10px;
-}
-
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto);
 }
 
 input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: var(--painel-campo);
+    color: var(--texto);
     font: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:hover {
+    border-color: var(--borda-forte);
 }
 
 input:focus {
-    outline: 2px solid #2563eb;
-    border-color: #2563eb;
+    outline: none;
+    border-color: var(--destaque);
+    box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.25);
 }
 
+/* evita o fundo amarelo/branco do autofill do navegador */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--texto);
+    caret-color: var(--texto);
+    -webkit-box-shadow: 0 0 0 1000px var(--painel-campo) inset;
+    transition: background-color 9999s ease-out 0s;
+}
+
+/* ---------- Botão (serve para <button> e <a>) ---------- */
+
 .botao-entrar {
+    display: block;
     width: 100%;
+    margin-top: 8px;
+    margin-bottom: 18px;
     padding: 13px;
     border: 0;
-    border-radius: 6px;
-    background-color: #2563eb;
-    color: white;
+    border-radius: 10px;
+    background-color: var(--destaque);
+    color: #fff;
     font: inherit;
-    font-weight: bold;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
-    margin-bottom: 15px;
+    transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 .botao-entrar:hover {
-    background-color: #1d4ed8;
+    background-color: var(--destaque-hover);
 }
+
+.botao-entrar:active {
+    transform: translateY(1px);
+}
+
+.botao-entrar:focus-visible,
+.logo:focus-visible,
+.registrar a:focus-visible,
+.link-alternativo a:focus-visible {
+    outline: 2px solid var(--destaque-hover);
+    outline-offset: 3px;
+}
+
+/* ---------- Mensagens de erro ---------- */
 
 .erro {
-    margin-bottom: 20px;
-    padding: 12px;
-    border-radius: 6px;
-    background-color: #fee2e2;
-    color: #b91c1c;
-}
-
-.registrar a {
-    text-decoration: none;
-    color: rgb(13, 4, 252);
-}
-
-.registrar a:hover {
-    color: #1d4ed8;
+    margin-bottom: 22px;
+    padding: 12px 14px;
+    border: 1px solid var(--erro-borda);
+    border-radius: 10px;
+    background-color: var(--erro-fundo);
+    color: var(--erro-texto);
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .erro-campo {
     margin-top: 8px;
-    color: #b91c1c;
-    font-size: 14px;
+    color: var(--erro-texto);
+    font-size: 13px;
+    line-height: 1.4;
 }
 
-.erro-campo ul {
+.erro-campo ul,
+.errorlist {
     list-style: none;
 }
 
+/* ---------- Textos de ajuda (regras de senha etc.) ---------- */
+
 .ajuda {
     margin-top: 8px;
-    color: #6b7280;
+    color: var(--texto-suave);
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .ajuda ul {
@@ -123,24 +223,63 @@ input:focus {
     padding-left: 18px;
 }
 
-.link-alternativo {
-    margin-top: 24px;
-    text-align: center;
-    color: #6b7280;
+.ajuda li + li {
+    margin-top: 2px;
 }
 
-.link-alternativo a {
-    color: #2563eb;
-    font-weight: bold;
+/* ---------- Links secundários ---------- */
+
+.registrar {
+    text-align: center;
+}
+
+.registrar a {
+    color: var(--destaque);
+    font-weight: 600;
     text-decoration: none;
 }
 
+.registrar a:hover {
+    color: var(--destaque-hover);
+    text-decoration: underline;
+}
 
-/*
+.link-alternativo {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
 
-LOGOUT
+.link-alternativo a {
+    color: var(--destaque);
+    font-weight: 600;
+    text-decoration: none;
+}
 
-*/ 
+.link-alternativo a:hover {
+    color: var(--destaque-hover);
+    text-decoration: underline;
+}
 
+/* ---------- Mobile ---------- */
 
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
 
+    .cartao-login {
+        padding: 32px 22px 28px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
