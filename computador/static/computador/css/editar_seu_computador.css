@@ -1,9 +1,10 @@
 
 .cadastro-pecas {
-    --cor-texto: #172033;
-    --cor-secundaria: #526079;
-    --cor-borda: #d5dce6;
-    --cor-principal: #1d4ed8;
+    --cor-texto: #f8f7ff;
+    --cor-secundaria: #ada5c4;
+    --cor-borda: rgb(255 255 255 / 14%);
+    --cor-principal: #7a5cff;
+    --cor-principal-hover: #946eff;
 
     width: calc(100% - 24px);
     max-width: 700px;
@@ -17,10 +18,12 @@
     padding: 24px;
 
     color: var(--cor-texto);
-    background: #fff;
-    border: 1px solid #e2e8f0;
+    background: rgb(16 13 29 / 92%);
+    border: 1px solid rgb(122 92 255 / 24%);
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgb(15 23 42 / 6%);
+    box-shadow:
+        0 24px 55px rgb(0 0 0 / 28%),
+        0 0 0 1px rgb(255 255 255 / 3%);
 
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 14px;
@@ -63,8 +66,9 @@
     display: inline-block;
     padding: 4px 9px;
 
-    color: #1e40af;
-    background: #eff6ff;
+    color: #ffffff;
+    background: rgb(122 92 255 / 18%);
+    border: 1px solid rgb(122 92 255 / 28%);
     border-radius: 6px;
 
     font-size: 11px;
@@ -147,7 +151,7 @@
     padding: 8px 10px;
 
     color: var(--cor-texto);
-    background-color: #f8fafc;
+    background-color: rgb(8 7 18 / 72%);
     border: 1px solid var(--cor-borda);
     border-radius: 7px;
     box-shadow: none;
@@ -172,7 +176,7 @@
 }
 
 .cadastro-pecas .campo :where(input, select, textarea):focus-visible {
-    outline: 2px solid var(--cor-principal);
+    outline: 2px solid rgb(122 92 255 / 70%);
     outline-offset: 2px;
     border-color: var(--cor-principal);
 }
@@ -188,17 +192,17 @@
    (vem depois da regra base para vencer em caso de empate)
    ========================================================= */
 .cadastro-pecas .campo-invalido :where(input, select, textarea) {
-    border-color: #b91c1c;
+    border-color: #f87171;
 }
 
 .cadastro-pecas .campo-invalido :where(input, select, textarea):focus-visible {
-    outline-color: #b91c1c;
-    border-color: #b91c1c;
+    outline-color: #f87171;
+    border-color: #f87171;
 }
 
 .cadastro-pecas .erros-campo {
     margin-top: 5px;
-    color: #b91c1c;
+    color: #fecaca;
     font-size: 12px;
 }
 
@@ -216,9 +220,9 @@
     margin: 0 0 16px;
     padding: 10px 12px;
 
-    color: #991b1b;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    color: #fecaca;
+    background: rgb(220 38 38 / 13%);
+    border: 1px solid rgb(248 113 113 / 34%);
     border-radius: 7px;
 
     font-size: 13px;
@@ -240,7 +244,7 @@
 
     background: transparent;
     border: 0;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid rgb(255 255 255 / 10%);
 }
 
 .cadastro-pecas :is(a.botao-voltar, a.botao-salvar, button.botao-salvar) {
@@ -272,30 +276,30 @@
 
 .cadastro-pecas a.botao-voltar,
 .cadastro-pecas a.botao-voltar:visited {
-    color: #334155;
-    background: #f1f5f9;
-    border-color: #e2e8f0;
+    color: #f8f7ff;
+    background: rgb(255 255 255 / 6%);
+    border-color: rgb(255 255 255 / 14%);
 }
 
 .cadastro-pecas a.botao-voltar:hover {
-    color: #334155;
-    background: #e2e8f0;
+    color: #fff;
+    background: rgb(255 255 255 / 10%);
 }
 
 .cadastro-pecas a.botao-salvar,
 .cadastro-pecas a.botao-salvar:visited,
 .cadastro-pecas button.botao-salvar {
     color: #fff;
-    background: var(--cor-principal);
+    background: linear-gradient(180deg, var(--cor-principal-hover), var(--cor-principal));
 }
 
 .cadastro-pecas a.botao-salvar:hover,
 .cadastro-pecas button.botao-salvar:hover {
-    background: #1e40af;
+    background: var(--cor-principal-hover);
 }
 
 .cadastro-pecas :is(a.botao-voltar, a.botao-salvar, button.botao-salvar):focus-visible {
-    outline: 2px solid var(--cor-principal);
+    outline: 2px solid rgb(122 92 255 / 72%);
     outline-offset: 3px;
 }
 
@@ -320,25 +324,25 @@
     padding: 0;
     overflow: hidden;
 
-    background: #fff;
-    border: 1px solid #dbe3ee;
+    background: rgb(8 7 18 / 62%);
+    border: 1px solid rgb(255 255 255 / 12%);
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgb(15 23 42 / 4%);
+    box-shadow: 0 14px 34px rgb(0 0 0 / 16%);
 }
 
 .cadastro-pecas.lista-computadores .cartao-cabecalho {
     margin: 0;
     padding: 14px 16px;
-    background: #eff6ff;
+    background: rgb(122 92 255 / 12%);
     border: 0;
-    border-bottom: 1px solid #dbeafe;
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
 }
 
 .cadastro-pecas.lista-computadores .computador-etiqueta {
     display: block;
     margin: 0 0 4px;
 
-    color: #1d4ed8;
+    color: #c8c2ff;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -373,7 +377,7 @@
 }
 
 .cadastro-pecas.lista-computadores .componente + .componente {
-    border-top: 1px solid #edf0f5;
+    border-top: 1px solid rgb(255 255 255 / 8%);
 }
 
 .cadastro-pecas.lista-computadores .componente dt {
@@ -399,8 +403,8 @@
     padding: 28px 16px;
 
     text-align: center;
-    background: #f8fafc;
-    border: 1px dashed #cbd5e1;
+    background: rgb(8 7 18 / 54%);
+    border: 1px dashed rgb(255 255 255 / 18%);
     border-radius: 10px;
 }
 

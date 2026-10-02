@@ -11,39 +11,55 @@
 </head>
 
 <body>
-    <main class="cartao-login">
-        <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+    <main class="autenticacao autenticacao-login">
+        <section class="painel-formulario">
+            <nav class="topo-auth" aria-label="Navegação de autenticação">
+                <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+                <a class="link-topo" href="{% url 'registrar' %}">Criar conta</a>
+            </nav>
 
-        <h1>Entrar</h1>
-        <p class="desc">Insira suas credenciais abaixo: </p>
+            <div class="conteudo-formulario">
+                <h1>Login</h1>
+                <p class="desc">Acesse sua conta para continuar montando seu computador.</p>
 
-        {% if form.errors %}
-            <p class="erro">
-                Usuário ou senha incorretos. Tente novamente.
-            </p>
-        {% endif %}
+                {% if form.errors %}
+                    <p class="erro">
+                        Usuário ou senha incorretos. Tente novamente.
+                    </p>
+                {% endif %}
 
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
 
-            <div class="campo">
-                {{ form.username.label_tag }}
-                {{ form.username }}
+                    <div class="campo">
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                    </div>
+                    
+                    <div class="campo">
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                    </div>
+
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    <button class="botao-entrar" type="submit">Entrar</button>
+
+                    <p class="link-alternativo">
+                        Ainda não possui uma conta?
+                        <a href="{% url 'registrar' %}">Registre-se</a>
+                    </p>
+                </form>
             </div>
-            
-            <div class="campo">
-                {{ form.password.label_tag }}
-                {{ form.password }}
+        </section>
+
+        <aside class="painel-visual painel-boas-vindas">
+            <div class="boas-vindas">
+                <p>Bem-vindo de volta</p>
+                <h2>Suas montagens estão te esperando.</h2>
+                <a href="{% url 'registrar' %}">Ainda não tem conta?</a>
             </div>
-
-            <input type="hidden" name="next" value="{{ next }}">
-
-            <button class="botao-entrar" type="submit">Entrar</button>
-
-            <div class="registrar">
-                <a href="{% url 'registrar' %}">Registrar-se</a>
-            </div>
-        </form>
+        </aside>
     </main>
 </body>
 </html>

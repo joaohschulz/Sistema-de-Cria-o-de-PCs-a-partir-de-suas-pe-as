@@ -11,17 +11,51 @@
 </head>
 
 <body>
-    <main class="cartao-login">
-        <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+    <main class="autenticacao autenticacao-saida">
+        <section class="painel-formulario">
+            <nav class="topo-auth" aria-label="Navegação de autenticação">
+                <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+                <a class="link-topo" href="{% url 'home' %}">Home</a>
+            </nav>
 
-        <h1>Até logo!</h1>
-        <p class="desc">Você saiu da sua conta com sucesso. Esperamos te ver novamente em breve.</p>
+            <div class="conteudo-formulario">
+                <p class="etiqueta">Sessão encerrada</p>
+                <h1>Até logo</h1>
+                <p class="desc">Você saiu da sua conta com sucesso. Suas montagens continuam salvas para a próxima visita.</p>
 
-        <a class="botao-entrar" href="{% url 'login' %}" style="display: block; text-align: center; text-decoration: none;">Entrar novamente</a>
+                <a class="botao-entrar" href="{% url 'login' %}">Entrar novamente</a>
 
-        <div class="registrar">
-            <a href="{% url 'home' %}">Voltar para a página inicial</a>
-        </div>
+                <p class="link-alternativo">
+                    <a href="{% url 'home' %}">Voltar para a página inicial</a>
+                </p>
+            </div>
+        </section>
+
+        <aside class="painel-visual" aria-hidden="true">
+            <div class="preview-montagem">
+                <div class="preview-topo">
+                    <span>Conta protegida</span>
+                    <strong>Logout</strong>
+                </div>
+
+                <div class="preview-linha">
+                    <span>Sessão</span>
+                    <strong>Encerrada</strong>
+                </div>
+                <div class="preview-linha">
+                    <span>Montagens</span>
+                    <strong>Salvas</strong>
+                </div>
+                <div class="preview-linha">
+                    <span>Histórico</span>
+                    <strong>Mantido</strong>
+                </div>
+                <div class="preview-linha pendente">
+                    <span>Próximo passo</span>
+                    <strong>Entrar</strong>
+                </div>
+            </div>
+        </aside>
     </main>
 </body>
 </html>

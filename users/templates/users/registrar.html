@@ -11,46 +11,80 @@
 </head>
 
 <body>
-    <main class="cartao-login">
-        <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+    <main class="autenticacao autenticacao-registro">
+        <section class="painel-formulario">
+            <nav class="topo-auth" aria-label="Navegação de autenticação">
+                <a class="logo" href="{% url 'home' %}">MonteSeuPC</a>
+                <a class="link-topo" href="{% url 'login' %}">Entrar</a>
+            </nav>
 
-        <h1>Crie sua conta</h1>
+            <div class="conteudo-formulario">
+                <p class="etiqueta">Comece agora</p>
+                <h1>Crie sua conta</h1>
 
-        <p class="descricao">
-            Cadastre-se para montar e salvar seu computador.
-        </p>
+                <p class="descricao">
+                    Guarde suas configurações e acompanhe cada escolha com mais calma.
+                </p>
 
-        <form method="post">
-            {% csrf_token %}
+                <form method="post">
+                    {% csrf_token %}
 
-            {% for field in form %}
-                <div class="campo">
-                    {{ field.label_tag }}
-                    {{ field }}
+                    {% for field in form %}
+                        <div class="campo">
+                            {{ field.label_tag }}
+                            {{ field }}
 
-                    {% if field.errors %}
-                        <div class="erro-campo">
-                            {{ field.errors }}
+                            {% if field.errors %}
+                                <div class="erro-campo">
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+
+                            {% if field.help_text %}
+                                <div class="ajuda">
+                                    {{ field.help_text }}
+                                </div>
+                            {% endif %}
                         </div>
-                    {% endif %}
+                    {% endfor %}
 
-                    {% if field.help_text %}
-                        <div class="ajuda">
-                            {{ field.help_text }}
-                        </div>
-                    {% endif %}
+                    <button class="botao-entrar" type="submit">
+                        Criar conta
+                    </button>
+                </form>
+
+                <p class="link-alternativo">
+                    Já possui uma conta?
+                    <a href="{% url 'login' %}">Entrar</a>
+                </p>
+            </div>
+        </section>
+
+        <aside class="painel-visual" aria-hidden="true">
+            <div class="preview-montagem">
+                <div class="preview-topo">
+                    <span>Primeira montagem</span>
+                    <strong>0 peças</strong>
                 </div>
-            {% endfor %}
 
-            <button class="botao-entrar" type="submit">
-                Criar conta
-            </button>
-        </form>
-
-        <p class="link-alternativo">
-            Já possui uma conta?
-            <a href="{% url 'login' %}">Entrar</a>
-        </p>
+                <div class="preview-linha">
+                    <span>Processador</span>
+                    <strong>Escolher</strong>
+                </div>
+                <div class="preview-linha">
+                    <span>Placa de vídeo</span>
+                    <strong>Escolher</strong>
+                </div>
+                <div class="preview-linha">
+                    <span>Memória</span>
+                    <strong>Escolher</strong>
+                </div>
+                <div class="preview-linha pendente">
+                    <span>Fonte</span>
+                    <strong>Depois</strong>
+                </div>
+            </div>
+        </aside>
     </main>
 </body>
 </html>

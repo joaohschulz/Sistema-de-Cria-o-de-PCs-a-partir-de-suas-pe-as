@@ -25,25 +25,60 @@
 
     <main class="principal">
         <section class="conteudo-principal">
+            <span class="etiqueta-home">MonteSeuPC</span>
             <h1>Monte o computador ideal para você</h1>
 
             <p class="descricao">
                 Escolha as peças do seu computador de forma simples e monte uma configuração que combina com o seu objetivo.
             </p>
 
-            <a class="botao" href="{% url 'login' %}">Começar a montar</a>
+            <div class="acoes-home">
+                <a class="botao" href="{% url 'login' %}">Começar a montar</a>
+                <a class="botao-secundario" href="#como-funciona">Ver como funciona</a>
+            </div>
         </section>
+
+        <aside class="painel-home" aria-label="Exemplo de montagem">
+            <div class="painel-topo">
+                <span>Configuração exemplo</span>
+                <strong>Uso geral</strong>
+            </div>
+
+            <dl class="lista-pecas">
+                <div>
+                    <dt>Processador</dt>
+                    <dd>Ryzen 5</dd>
+                </div>
+
+                <div>
+                    <dt>Memória</dt>
+                    <dd>16 GB</dd>
+                </div>
+
+                <div>
+                    <dt>Armazenamento</dt>
+                    <dd>SSD 1 TB</dd>
+                </div>
+
+                <div>
+                    <dt>Placa de vídeo</dt>
+                    <dd>RTX 4060</dd>
+                </div>
+            </dl>
+        </aside>
     </main>
 
-    <section id="como-funciona" class="secao">
-        <h2>Como funciona</h2>
-        <p>Escolha as peças, veja a compatibilidade e salve sua configuração.</p>
-    </section>
+    <div class="secoes-home">
+        <section id="como-funciona" class="secao">
+            <h2>Como funciona</h2>
+            <p>Crie um computador, cadastre as peças e mantenha suas configurações salvas para consultar depois.</p>
+        </section>
 
-    <section id="sobre" class="secao">
-        <h2>Sobre</h2>
-        <p>O MonteSeuPC ajuda você a montar um computador sem complicação.</p>
-    </section>
+        <section id="sobre" class="secao">
+            <h2>Sobre</h2>
+            <p>Uma ferramenta direta para organizar escolhas de hardware sem planilhas ou anotações perdidas.</p>
+        </section>
+    </div>
 
     <footer>
         <p>© 2026 MonteSeuPC</p>

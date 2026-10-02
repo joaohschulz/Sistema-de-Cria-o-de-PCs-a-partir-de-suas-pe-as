@@ -1,11 +1,14 @@
-
 :root {
-    --lateral: #12204a;
-    --lateral-texto: #c3cdf0;
-    --destaque: #7c9eff;
-    --bancada: #eef2f8;
-    --grade: rgb(29 78 216 / 6%);
-    --texto: #172033;
+    --fundo: #090713;
+    --fundo-2: #110d20;
+    --lateral: #100d1d;
+    --lateral-borda: rgb(122 92 255 / 28%);
+    --lateral-texto: #c8c2df;
+    --texto: #f8f7ff;
+    --texto-suave: #a9a1c0;
+    --destaque: #7a5cff;
+    --destaque-hover: #946eff;
+    --perigo: #ef4444;
 }
 
 * {
@@ -19,16 +22,18 @@ body {
     min-height: 100vh;
     font-family: "Open Sans", sans-serif;
     color: var(--texto);
-    background-color: var(--bancada);
+    background:
+        radial-gradient(circle at 14% 12%, rgb(122 92 255 / 22%), transparent 25%),
+        radial-gradient(circle at 92% 90%, rgb(82 47 204 / 24%), transparent 28%),
+        linear-gradient(135deg, var(--fundo) 0%, var(--fundo-2) 52%, #0b0718 100%);
     -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- Menu lateral ---------- */
 .barra-lateral {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 28px;
+    gap: 26px;
 
     flex: 0 0 264px;
     width: 264px;
@@ -39,20 +44,22 @@ body {
     top: 0;
     overflow-y: auto;
 
-    background-color: var(--lateral);
+    background:
+        linear-gradient(180deg, rgb(16 13 29 / 96%), rgb(10 8 20 / 96%)),
+        radial-gradient(circle at 20% 0%, rgb(122 92 255 / 22%), transparent 38%);
+    border-right: 1px solid var(--lateral-borda);
+    box-shadow: 18px 0 45px rgb(0 0 0 / 22%);
 }
 
-/* Marca: chip desenhado só com gradientes */
 .barra-lateral::before {
     content: "MonteSeuPC";
     display: block;
-    padding-left: 40px;
+    padding-left: 38px;
 
     color: #fff;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 800;
     line-height: 28px;
-    letter-spacing: -0.01em;
 
     background:
         linear-gradient(var(--destaque), var(--destaque)) 8px 8px / 12px 12px no-repeat,
@@ -60,7 +67,6 @@ body {
         linear-gradient(var(--destaque), var(--destaque)) 0 0 / 28px 28px no-repeat;
 }
 
-/* Usuário logado */
 .logado {
     display: flex;
     align-items: center;
@@ -68,7 +74,7 @@ body {
     padding: 10px 12px;
 
     background-color: rgb(255 255 255 / 6%);
-    border: 1px solid rgb(255 255 255 / 9%);
+    border: 1px solid rgb(255 255 255 / 10%);
     border-radius: 12px;
 }
 
@@ -88,17 +94,16 @@ body {
 
     color: #fff;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-/* Navegação */
 .menu-principal {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .menu-principal a {
@@ -107,46 +112,40 @@ body {
     padding: 11px 14px 11px 20px;
 
     color: var(--lateral-texto);
-    border-radius: 8px;
+    border: 1px solid transparent;
+    border-radius: 9px;
 
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
 
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .menu-principal a::before {
     content: "";
     position: absolute;
-    top: 9px;
-    bottom: 9px;
-    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    left: 7px;
     width: 3px;
     border-radius: 3px;
     background: transparent;
     transition: background-color 0.15s ease;
 }
 
-.menu-principal a:hover {
-    color: #fff;
-    background-color: rgb(255 255 255 / 7%);
-}
-
-.menu-principal a:hover::before {
-    background: var(--destaque);
-}
-
+.menu-principal a:hover,
 .menu-principal a.active {
     color: #fff;
-    background-color: rgb(124 158 255 / 16%);
+    background-color: rgb(122 92 255 / 15%);
+    border-color: rgb(122 92 255 / 28%);
 }
 
+.menu-principal a:hover::before,
 .menu-principal a.active::before {
     background: var(--destaque);
 }
 
-/* Sair, sempre no rodapé do menu */
 .sair {
     margin-top: auto;
 }
@@ -160,14 +159,14 @@ body {
     width: 100%;
     padding: 11px 16px;
 
-    color: #ffb4b4;
-    background: transparent;
-    border: 1px solid rgb(255 255 255 / 18%);
-    border-radius: 8px;
+    color: #ffc4c4;
+    background: rgb(255 255 255 / 4%);
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 9px;
 
     font: inherit;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
 
     transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
@@ -175,34 +174,32 @@ body {
 
 .botaosair:hover {
     color: #fff;
-    background-color: #dc2626;
-    border-color: #dc2626;
+    background-color: var(--perigo);
+    border-color: var(--perigo);
 }
 
 .menu-principal a:focus-visible,
 .botaosair:focus-visible {
-    outline: 2px solid #a5b8ff;
-    outline-offset: 2px;
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
 }
 
-/* ---------- Área de trabalho ---------- */
 .conteudo-principal {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
     flex: 1;
     min-width: 0;
-    padding: 32px 24px;
+    padding: 34px 24px;
 
     color: var(--texto);
-    background-image:
-        linear-gradient(var(--grade) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grade) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background:
+        radial-gradient(circle at 82% 12%, rgb(122 92 255 / 12%), transparent 28%),
+        linear-gradient(135deg, rgb(255 255 255 / 2%), transparent 42%);
 }
 
-/* ---------- Telas menores: menu vira faixa no topo ---------- */
 @media (max-width: 720px) {
     body {
         flex-direction: column;
@@ -215,6 +212,8 @@ body {
         position: static;
         padding: 16px;
         gap: 16px;
+        border-right: 0;
+        border-bottom: 1px solid var(--lateral-borda);
     }
 
     .menu-principal {
