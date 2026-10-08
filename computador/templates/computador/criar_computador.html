@@ -4,11 +4,12 @@
 {% block titulo %}Criar computador{% endblock %}
 
 {% block extra_css %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
 {% endblock %}
 
 {% block conteudo %}
+{% include 'computador/modals/modal_confirm.html' %}
 <section class="cadastro-pecas" aria-labelledby="titulo-cadastro">
     <header class="cadastro-cabecalho">
         <span class="cadastro-etiqueta">Novo computador</span>
@@ -25,13 +26,13 @@
                 {{ form.nome }}
 
                 {% if form.nome.help_text %}
-                    <div class="ajuda-campo">{{ form.nome.help_text }}</div>
+                <div class="ajuda-campo">{{ form.nome.help_text }}</div>
                 {% endif %}
 
                 {% if form.nome.errors %}
-                    <div class="erros-campo" role="alert">
-                        {{ form.nome.errors }}
-                    </div>
+                <div class="erros-campo" role="alert">
+                    {{ form.nome.errors }}
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -40,6 +41,7 @@
             <a class="botao-voltar" href="{% url 'dashboard' %}">Voltar</a>
             <button class="botao-salvar" type="submit">Salvar computador</button>
         </footer>
+
     </form>
 </section>
 {% endblock %}

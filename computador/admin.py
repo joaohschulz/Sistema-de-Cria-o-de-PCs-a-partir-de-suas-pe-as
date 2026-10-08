@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Computador, pecasDeComputador
+from .models import Computador, pecasDeComputador, Processador, PlacaMae, MemoriaRam, Armazenamento, PlacaDeVideo, Fonte
 
 
 class ComputadorAdmin(admin.ModelAdmin):
@@ -13,16 +13,22 @@ class pecasDeComputadorAdmin(admin.ModelAdmin):
 class ProcessadorAdmin(admin.ModelAdmin):
     list_display = ('processador',)
 class PlacaMaeAdmin(admin.ModelAdmin):
-    list_display = ('placaMae',)
-class MemoriaRam(admin.ModelAdmin):
+    list_display = ('placaMae', 'socket', 'chipset', 'tipo_memoria')
+class MemoriaRamAdmin(admin.ModelAdmin):
     list_display = ('memoriaRam',)
 class ArmazenamentoAdmin(admin.ModelAdmin):
     list_display = ('armazenamento',)
-class PlacaDeVideo(admin.ModelAdmin):
+class PlacaDeVideoAdmin(admin.ModelAdmin):
     list_display = ('placaDeVideo',)
-class Fonte(admin.ModelAdmin):
+class FonteAdmin(admin.ModelAdmin):
     list_display = ('fonte',)
 
 admin.site.register(Computador, ComputadorAdmin)
 admin.site.register(pecasDeComputador, pecasDeComputadorAdmin)
+admin.site.register(Processador, ProcessadorAdmin)
+admin.site.register(PlacaMae, PlacaMaeAdmin)
+admin.site.register(MemoriaRam, MemoriaRamAdmin)
+admin.site.register(Armazenamento, ArmazenamentoAdmin)
+admin.site.register(PlacaDeVideo, PlacaDeVideoAdmin)
+admin.site.register(Fonte, FonteAdmin)
 

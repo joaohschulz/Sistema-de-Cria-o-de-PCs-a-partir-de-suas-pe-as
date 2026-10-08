@@ -4,11 +4,11 @@
 {% block titulo %}Criar computador{% endblock %}
 
 {% block extra_css %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'computador/css/editar_seu_computador.css' %}">
 {% endblock %}
 
-{% block conteudo %}
+{% block conteudo %}    '       '
 <section class="cadastro-pecas lista-computadores" aria-labelledby="titulo-computadores">
     <header class="cadastro-cabecalho">
         <span class="cadastro-etiqueta">Meus computadores</span>
@@ -18,48 +18,54 @@
 
     <div class="grade-computadores">
         {% for c in pc %}
-            <article class="cartao-computador">
-                <header class="cartao-cabecalho">
-                    <span class="computador-etiqueta">Computador</span>
-                    <h2>{{ c.nome }}</h2>
-                </header>
+        <article class="cartao-computador">
+            <header class="cartao-cabecalho">
+                <div class="pc-delete">
+                    <form action="{% url 'deletar_computador' c.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">X</button>
+                    </form>
+                </div>
+                <span class="computador-etiqueta">Computador</span>
+                <h2>{{ c.nome }}</h2>
+            </header>
 
-                <dl class="lista-componentes">
-                    <div class="componente">
-                        <dt>Processador</dt>
-                        <dd>{{ c.pecas.processador }}</dd>
-                    </div>
+            <dl class="lista-componentes">
+                <div class="componente">
+                    <dt>Processador</dt>
+                    <dd>{{ c.pecas.processador }}</dd>
+                </div>
 
-                    <div class="componente">
-                        <dt>Placa-mãe</dt>
-                        <dd>{{ c.pecas.placaMae }}</dd>
-                    </div>
+                <div class="componente">
+                    <dt>Placa-mãe</dt>
+                    <dd>{{ c.pecas.placaMae }}</dd>
+                </div>
 
-                    <div class="componente">
-                        <dt>Memória RAM</dt>
-                        <dd>{{ c.pecas.memoriaRam }}</dd>
-                    </div>
+                <div class="componente">
+                    <dt>Memória RAM</dt>
+                    <dd>{{ c.pecas.memoriaRam }}</dd>
+                </div>
 
-                    <div class="componente">
-                        <dt>Armazenamento</dt>
-                        <dd>{{ c.pecas.armazenamento }}</dd>
-                    </div>
+                <div class="componente">
+                    <dt>Armazenamento</dt>
+                    <dd>{{ c.pecas.armazenamento }}</dd>
+                </div>
 
-                    <div class="componente">
-                        <dt>Placa de vídeo</dt>
-                        <dd>{{ c.pecas.placaDeVideo }}</dd>
-                    </div>
+                <div class="componente">
+                    <dt>Placa de vídeo</dt>
+                    <dd>{{ c.pecas.placaDeVideo }}</dd>
+                </div>
 
-                    <div class="componente">
-                        <dt>Fonte</dt>
-                        <dd>{{ c.pecas.fonte }}</dd>
-                    </div>
-                </dl>
-            </article>
+                <div class="componente">
+                    <dt>Fonte</dt>
+                    <dd>{{ c.pecas.fonte }}</dd>
+                </div>
+            </dl>
+        </article>
         {% empty %}
-            <div class="estado-vazio">
-                <p>Você ainda não criou nenhum computador</p>
-            </div>
+        <div class="estado-vazio">
+            <p>Você ainda não criou nenhum computador</p>
+        </div>
         {% endfor %}
     </div>
 

@@ -1,0 +1,34 @@
+{% load static %}
+
+{% if messages %}
+    <link rel="stylesheet" href="{% static 'computador/css/modal.css' %}">
+
+    <dialog id="modal-mensagens" class="modal-aviso"
+            aria-labelledby="modal-titulo">
+
+        <div class="modal-aviso__icone" aria-hidden="true">
+            ✓
+        </div>
+
+        <h2 id="modal-titulo" class="modal-aviso__titulo">
+            Tudo certo!
+        </h2>
+
+        <div class="modal-aviso__mensagens">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+
+        <form method="dialog" class="modal-aviso__acoes">
+            <button type="submit" class="modal-aviso__botao" autofocus>
+                Entendi
+            </button>
+        </form>
+
+    </dialog>
+
+    <script>
+        document.getElementById("modal-mensagens").showModal();
+    </script>
+{% endif %}

@@ -16,8 +16,12 @@ class Processador(models.Model):
     
 class PlacaMae(models.Model):
     placaMae = models.CharField(max_length=100, blank=True)
+    socket = models.CharField(max_length=30, blank=True, null=True)
+    chipset = models.CharField(max_length=30, blank=True, null=True)
+    tipo_memoria = models.CharField(max_length=30, blank=True, null=True)
+    
     def __str__(self):
-        return self.placaMae
+        return f"{self.placaMae} | Socket: {self.socket} | ChipSet: {self.chipset} | Tipo de Memória: {self.tipo_memoria}"
     
 class MemoriaRam(models.Model):
     memoriaRam = models.CharField(max_length=100, blank=True)
