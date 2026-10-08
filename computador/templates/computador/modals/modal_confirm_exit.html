@@ -1,0 +1,36 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'computador/css/modal.css' %}">
+
+<dialog
+    id="modal-sair"
+    class="modal-aviso"
+    aria-labelledby="titulo-modal-sair"
+>
+    <h2 id="titulo-modal-sair" class="modal-aviso__titulo">
+        Deseja sair?
+    </h2>
+
+    <div class="modal-aviso__mensagens">
+        <p>Você tem certeza que quer sair da sua conta?</p>
+    </div>
+
+    <div class="modal-aviso__acoes">
+        <form method="dialog">
+            <button
+                type="submit"
+                class="modal-aviso__botao botao-cancelar"
+                autofocus
+            >
+                Não, continuar
+            </button>
+        </form>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="modal-aviso__botao">
+                Sim, sair
+            </button>
+        </form>
+    </div>
+</dialog>

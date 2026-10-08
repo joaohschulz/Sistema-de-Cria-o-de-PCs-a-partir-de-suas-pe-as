@@ -108,6 +108,17 @@
     outline-offset: 3px;
 }
 
+
+
+/* acoes */
+
+.modal-aviso__acoes {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
 /* Telas pequenas */
 @media (max-width: 480px) {
     .modal-aviso__botao {

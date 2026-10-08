@@ -1,5 +1,5 @@
 {% load static %}
-
+{% include 'computador/modals/modal_confirm_exit.html' %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,28 +14,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
 
-  
+
 
 
     {% block extra_css %}{% endblock %}
 
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 
 <body>
     <header class="barra-lateral">
         <div class="logado">
-            <img
-                src="{% static 'computador/img/usuario.jpg' %}"
-                alt="Foto do usuário"
-            >
+            <img src="{% static 'computador/img/usuario.jpg' %}" alt="Foto do usuário">
 
             <span class="nome">{{ user.username }}</span>
         </div>
@@ -50,34 +46,38 @@
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
 
-                <button class="botaosair" type="submit">Sair</button>
+                <button type="button" class="botaosair" onclick="document.getElementById('modal-sair').showModal()">
+                    Sair
+                </button>
             </form>
         </nav>
     </header>
 
     <main class="conteudo-principal">
         {% block conteudo %}
-            <section class="cadastro-pecas" aria-labelledby="titulo-inicio">
-                <header class="cadastro-cabecalho">
-                    <span class="cadastro-etiqueta">Início</span>
-                    <h1 id="titulo-inicio">Olá, {{ user.username }}!</h1>
-                    <p>
-                        Use o menu ao lado para criar um computador ou visualizar
-                        suas configurações.
-                    </p>
-                </header>
+        <section class="cadastro-pecas" aria-labelledby="titulo-inicio">
+            <header class="cadastro-cabecalho">
+                <span class="cadastro-etiqueta">Início</span>
+                <h1 id="titulo-inicio">Olá, {{ user.username }}!</h1>
+                <p>
+                    Use o menu ao lado para criar um computador ou visualizar
+                    suas configurações.
+                </p>
+            </header>
 
-                <footer class="acoes-formulario">
-                    <a class="botao-salvar" href="{% url 'criar_computador' %}">
-                        Criar novo computador
-                    </a>
-                </footer>
-            </section>
-            <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.11/dist/htmx.min.js"></script>    
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <footer class="acoes-formulario">
+                <a class="botao-salvar" href="{% url 'criar_computador' %}">
+                    Criar novo computador
+                </a>
+            </footer>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.11/dist/htmx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
         {% endblock %}
     </main>
-    
+
 </body>
 
 </html>
